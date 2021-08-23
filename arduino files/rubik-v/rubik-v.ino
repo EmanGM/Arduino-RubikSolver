@@ -47,4 +47,5 @@ int Rubik_FaceToColorLUT[] = {
     RC_ORANGE,
 };
 
+
 unsigned char Rubik[RF_TOTAL_FACES][9];

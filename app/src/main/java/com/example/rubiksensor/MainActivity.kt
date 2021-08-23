@@ -11,6 +11,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.AsyncTask
 import android.util.Log
+import android.widget.Button
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
@@ -27,6 +28,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         ConnectDeviceTo(this).execute()
+
+        findViewById<Button>(R.id.stikersOp).setOnClickListener {
+            val intent = Intent(this, CameraActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     companion object {

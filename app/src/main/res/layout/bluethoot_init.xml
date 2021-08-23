@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".SelectBluetooth">
 
+
     <ListView
         android:id="@+id/bluetooth_list"
         android:layout_width="match_parent"
@@ -16,6 +17,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
+
+    </ListView>
+
 
     <Button
         android:id="@+id/refresh"
@@ -38,6 +42,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/refresh" />
 
-    </ListView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,10 +5,16 @@ void setup() {
   pwm.setPWMFreq(60);
 
   servos_init();
-  ColorSensorBegin();
-  Serial.begin(115200);
+  Serial.begin(9600); //Can only work with HC-05 with this baud rate
   delay(2000);
-  SetColorPoints();
+  //SetColorPoints();
+  rubik.Init();
+//  rubik.Print();
+//  for(int i = 0; i < 6; i++) {
+//    getBit(i);
+//  }
+  rubik.Print();
+  //servos_test();
   Menu_Print();
 }
 

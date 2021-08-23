@@ -6,13 +6,16 @@
 
 Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver();
 
+#define SERVOMIN  100 // This is the 'minimum' pulse length count (out of 4096)
+#define SERVOMAX  700 // This is the 'maximum' pulse length count (out of 4096)
+
 #define DELAY_BETWEEN_STEPS (150)
 #define DELAY_BETWEEN_STEPS2 (500) 
 
 
 int place[] = {18, 0, -18, -24};
 
-
+//Base class
 class RServo {
   protected:
 
@@ -25,7 +28,10 @@ class RServo {
     int pwm_current;
 
   public:
-    //RServo() { }
+    RServo() { 
+      this->pwm_min = SERVOMIN;
+      this->pwm_max = SERVOMAX;
+    }
 
     void afinar() {
       static int PWM = 400;
@@ -69,9 +75,9 @@ class Rotater : public RServo {
   public:
     Rotater(int channel, int pwm_min, int pwm_med, int pwm_max) {
       this->channel = channel;
-      this->pwm_min = pwm_min;
+      this->pwm_min += pwm_min;
       this->pwm_med = pwm_med;
-      this->pwm_max = pwm_max;
+      this->pwm_max += pwm_max;
       phy_min = 0;
       phy_med = 90;
       phy_max = 180;
@@ -152,11 +158,9 @@ class Pusher : public RServo {
   public:
     Pusher(int channel, int phy_med) {
       this->channel = channel;
-      this->pwm_min = 150;
-      this->pwm_max = 600;
-      this->phy_min = 0;
-      this->phy_max = 60;
       this->phy_med = phy_med;
+      phy_min = 0;
+      phy_max = 60;
     }
 
     void rmove(int phy) {
@@ -193,27 +197,17 @@ class Pusher : public RServo {
     }
 };
 
-/* Antigos valores(não sei porquê)
-Rotater Up_Right(0, 130, 330, 560);             //motor para rodar a face da direita no pino 0
-Rotater Up_Back(1, 130, 325, 545);              //motor para rodar a face de trás no pino 1
-Rotater Up_Left(2, 125, 310, 530);              //motor para rodar a face da esquerda no pino 2
-Rotater Up_Front(3, 125, 340, 585);             //motor para rodar a face da frente no pino 3
+// Antigos valores(não sei porquê)
+Rotater Up_Right(0, 0, 330, 0);             //motor para rodar a face da direita no pino 0
+Rotater Up_Back(1, 0, 325, 0);              //motor para rodar a face de trás no pino 1
+Rotater Up_Left(2, 0, 310, 0);              //motor para rodar a face da esquerda no pino 2
+Rotater Up_Front(3, 0, 340, 0);             //motor para rodar a face da frente no pino 3
 
-Pusher Down_Right(4, 46);            //motor para andar a face da direita no pino 4
-Pusher Down_Back(5, 44);             //motor para andar a face de trás no pino 5
-Pusher Down_Left(6, 42);             //motor para andar a face da esquerda no pino 6
-Pusher Down_Front(7, 45);            //motor para andar a face da frente no pino 7
-*/
+Pusher Down_Right(4, 0);            //motor para andar a face da direita no pino 4
+Pusher Down_Back(5, 0);             //motor para andar a face de trás no pino 5
+Pusher Down_Left(6, 0);             //motor para andar a face da esquerda no pino 6
+Pusher Down_Front(7, 0);            //motor para andar a face da frente no pino 7
 
-Rotater Up_Right(0, 120, 375, 660);             //motor para rodar a face da direita no pino 0
-Rotater Up_Back(1, 150, 360, 610);              //motor para rodar a face de trás no pino 1
-Rotater Up_Left(2, 140, 350, 590);              //motor para rodar a face da esquerda no pino 2
-Rotater Up_Front(3, 130, 400, 680);             //motor para rodar a face da frente no pino 3
-
-Pusher Down_Right(4, 51);            //motor para andar a face da direita no pino 4
-Pusher Down_Back(5, 47);             //motor para andar a face de trás no pino 5
-Pusher Down_Left(6, 45);             //motor para andar a face da esquerda no pino 6
-Pusher Down_Front(7, 49);            //motor para andar a face da frente no pino 7
 
 
 void servos_init();
@@ -241,10 +235,10 @@ void servos_init() {
 
 void servos_test() {
 
-//  Down_Front.rmove(10);
-//  Down_Back.rmove(10);
-//  Down_Right.rmove(10);
-//  Down_Left.rmove(10);
+  Down_Front.rmove(0);
+  Down_Back.rmove(0);
+  Down_Right.rmove(0);
+  Down_Left.rmove(0);
 //  for(int i = 10; i < 60; i++) {
 //    Down_Front.rmove(i);
 //    Down_Back.rmove(i);
@@ -252,30 +246,30 @@ void servos_test() {
 //    delay(50);
 //  }
 //  delay(2000);
-  ServosFace_RightCW();
-  delay(500);
-  ServosFace_BackCW();
-  delay(500);
-  ServosFace_LeftCW();
-  delay(500);
-  ServosFace_FrontCW();
-  delay(500);
-  ServosCube_MoveX();
-  delay(1000);
-  ServosCube_Movex();
-  delay(1000);
-  ServosCube_MoveZ();
-  delay(1000);
-  ServosCube_Movez();
-  delay(1000);
-  ServosFace_RightCCW();
-  delay(1000);
-  ServosFace_BackCCW();
-  delay(500);
-  ServosFace_LeftCCW();
-  delay(500);
-  ServosFace_FrontCCW();
-  delay(500);
+//  ServosFace_RightCW();
+//  delay(500);
+//  ServosFace_BackCW();
+//  delay(500);
+//  ServosFace_LeftCW();
+//  delay(500);
+//  ServosFace_FrontCW();
+//  delay(500);
+//  ServosCube_MoveX();
+//  delay(1000);
+//  ServosCube_Movex();
+//  delay(1000);
+//  ServosCube_MoveZ();
+//  delay(1000);
+//  ServosCube_Movez();
+//  delay(1000);
+//  ServosFace_RightCCW();
+//  delay(1000);
+//  ServosFace_BackCCW();
+//  delay(500);
+//  ServosFace_LeftCCW();
+//  delay(500);
+//  ServosFace_FrontCCW();
+//  delay(500);
 }
 
 

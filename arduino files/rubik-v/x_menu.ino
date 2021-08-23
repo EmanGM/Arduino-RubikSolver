@@ -156,7 +156,7 @@ void Menu_Process() {
         break;
       case 'M':
         rubik.Init();
-        sequencia_de_armazenamento();
+        //sequencia_de_armazenamento();
         break;
       case 'S':                                   
         Serial.print(F("Solving the cube.")); delay(600);

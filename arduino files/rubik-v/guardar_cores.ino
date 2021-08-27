@@ -1,90 +1,63 @@
 #define DELAY_BETWEEN_STEPS1 (500) 
 
 
+static clearVision() {
+  
+  Down_Right.rmove(place[3]);
+  Down_Left.rmove(place[3]);
+  delay(DELAY_BETWEEN_STEPS1);
+  Down_Front.rmove(place[1] + 5);
+  Down_Back.rmove(place[1] + 5);
+  delay(DELAY_BETWEEN_STEPS1);
+  Up_Back.Rotate(0);
+  Up_Front.Rotate(180);
+  
+}
 
 void sequencia_de_armazenamento() {
 
-   //face 0 = front
-   getBit(RF_FRONT);
-   //face 1 = up
-   ServosCube_Movex();
-   getBit(RF_UP);
-   //face 2 = right
-   ServosCube_MoveX();
-   ServosCube_MoveY();
+   //face 0 = right
+   clearVision();
    getBit(RF_RIGHT);
-   //face 3 = back
-   ServosCube_MoveY();
-   getBit(RF_BACK);
-   //face 4 = left
-   ServosCube_MoveY();
-   getBit(RF_BACK);
-   //face 5 = down
-   ServosCube_MoveY();
-   ServosCube_MoveX();
+   Up_Back.Rotate(180);
+   Up_Front.Rotate(0);
+   //face 1 = left
+   getBit(RF_LEFT);
+   Up_Front.Rotate(90);
+   Up_Back.Rotate(90);
+   Down_Front.rmove(place[1]);
+   Down_Back.rmove(place[1]);
+   delay(DELAY_BETWEEN_STEPS1);
+   Down_Right.rmove(place[1] + 5);
+   Down_Left.rmove(place[1] + 5);
+   delay(DELAY_BETWEEN_STEPS1);
+   Down_Front.rmove(place[3]);
+   Down_Back.rmove(place[3]);
+   delay(DELAY_BETWEEN_STEPS1);
+   Up_Right.Rotate(0);
+   Up_Left.Rotate(180);
+   //face 2 = Up
+   getBit(RF_UP);
+   Up_Right.Rotate(180);
+   Up_Left.Rotate(0);
+   //face 3 = Down
    getBit(RF_DOWN);
-
-   ServosCube_Movex();
+   Up_Right.Rotate(90);
+   Up_Left.Rotate(90);
+   Down_Right.rmove(place[1]);
+   Down_Left.rmove(place[1]);
+   delay(DELAY_BETWEEN_STEPS1);
+   ServosCube_MoveZ();
+   //face 4 = front
+   clearVision();
+   getBit(RF_FRONT);
+   Up_Back.Rotate(180);
+   Up_Front.Rotate(0);
+   //face 5 = back
+   getBit(RF_BACK);
+   Up_Back.Rotate(90);
+   Up_Front.Rotate(90);
+   Down_Front.rmove(place[1]);
+   Down_Back.rmove(place[1]);
+   delay(DELAY_BETWEEN_STEPS1);
 }
-
-/*
-void setFaceColors(int face) {
-  //int aperto = 20;
-  
-    delay(DELAY_BETWEEN_STEPS1);      
-    Down_Right.rmove(place[2]);
-    Down_Left.rmove(place[2]);
-    delay(DELAY_BETWEEN_STEPS1);      
-    Down_Front.rmove(place[0]);                 
-    Down_Back.rmove(place[2]);  
-  delay(500);       
-  edgeSensor.setColor(face);
-  delay(500);
-    Down_Front.rmove(place[2]);                
-    Down_Back.rmove(place[0]);     
-    delay(DELAY_BETWEEN_STEPS1);  
-    Down_Right.rmove(place[1]);
-    Down_Left.rmove(place[1]);
-    delay(DELAY_BETWEEN_STEPS1);   
-    Down_Back.rmove(place[3]);   
-    Down_Front.rmove(place[3]);       
-    delay(DELAY_BETWEEN_STEPS1);    
-    Down_Right.rmove((place[0] + 20));
-    Down_Left.rmove(place[2]);   
-  delay(500);       
-  cornerSensor.setColor(face);
-  delay(500);
-    Down_Right.rmove(place[1]);
-    Down_Left.rmove(place[1]); 
-    delay(DELAY_BETWEEN_STEPS1); 
-    Down_Front.rmove(place[2]);                
-    Down_Back.rmove(place[0]);  
-    delay(DELAY_BETWEEN_STEPS1);   
-    Down_Right.rmove(place[2]);
-    Down_Left.rmove(place[2]);        
-    delay(200); 
-    Down_Front.rmove(place[1]);                
-    Down_Back.rmove(place[1]);  
-    delay(200);   
-    Down_Right.rmove(place[1]);
-    Down_Left.rmove(place[1]);  
-    delay(DELAY_BETWEEN_STEPS1);      
-}
-
-void SetColorPoints() {
-
-  int cor[] = {RC_ORANGE, RC_GREEN, RC_RED, RC_BLUE};
-  for(int i = 0; i < 4; i++) {
-      setFaceColors(cor[i]);    
-      ServosCube_MoveZ();
-  }
-  delay(1000);
-  ServosCube_MoveX();
-    setFaceColors(RC_YELLOW);
-  ServosCube_Movex();
-  delay(DELAY_BETWEEN_STEPS1);      
-  ServosCube_Movex();
-  delay(1000);
-    setFaceColors(RC_WHITE);
-  ServosCube_MoveX();
-}*/

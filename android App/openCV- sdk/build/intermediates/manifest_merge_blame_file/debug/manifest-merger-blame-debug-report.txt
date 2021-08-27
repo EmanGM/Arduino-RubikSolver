@@ -1,0 +1,13 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="org.opencv"
+4    android:versionCode="405020"
+5    android:versionName="4.5.2" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+8-->C:\Users\Emanuel\OneDrive\Ambiente de Trabalho\Testes de arduino\Rubik Project\rubik-v.0.3.0\openCV- sdk\java\AndroidManifest.xml
+9        android:targetSdkVersion="26" />
+9-->C:\Users\Emanuel\OneDrive\Ambiente de Trabalho\Testes de arduino\Rubik Project\rubik-v.0.3.0\openCV- sdk\java\AndroidManifest.xml
+10
+11</manifest>

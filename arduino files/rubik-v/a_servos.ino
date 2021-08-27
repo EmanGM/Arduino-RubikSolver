@@ -6,14 +6,14 @@
 
 Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver();
 
-#define SERVOMIN  100 // This is the 'minimum' pulse length count (out of 4096)
-#define SERVOMAX  700 // This is the 'maximum' pulse length count (out of 4096)
+#define SERVOMIN  140 // This is the 'minimum' pulse length count (out of 4096)
+#define SERVOMAX  670 // This is the 'maximum' pulse length count (out of 4096)
 
 #define DELAY_BETWEEN_STEPS (150)
 #define DELAY_BETWEEN_STEPS2 (500) 
 
-
-int place[] = {18, 0, -18, -24};
+//relativo ao phy_med
+int place[] = {15, 0, -18, -24};
 
 //Base class
 class RServo {
@@ -197,16 +197,16 @@ class Pusher : public RServo {
     }
 };
 
-// Antigos valores(não sei porquê)
-Rotater Up_Right(0, 0, 330, 0);             //motor para rodar a face da direita no pino 0
-Rotater Up_Back(1, 0, 325, 0);              //motor para rodar a face de trás no pino 1
-Rotater Up_Left(2, 0, 310, 0);              //motor para rodar a face da esquerda no pino 2
-Rotater Up_Front(3, 0, 340, 0);             //motor para rodar a face da frente no pino 3
 
-Pusher Down_Right(4, 0);            //motor para andar a face da direita no pino 4
-Pusher Down_Back(5, 0);             //motor para andar a face de trás no pino 5
-Pusher Down_Left(6, 0);             //motor para andar a face da esquerda no pino 6
-Pusher Down_Front(7, 0);            //motor para andar a face da frente no pino 7
+Rotater Up_Right(0, 0, 400, 0);             //motor para rodar a face da direita no pino 0
+Rotater Up_Back(1, 0, 400, 0);              //motor para rodar a face de trás no pino 1
+Rotater Up_Left(2, 0, 400, 0);              //motor para rodar a face da esquerda no pino 2
+Rotater Up_Front(3, -10, 390, 0);             //motor para rodar a face da frente no pino 3
+
+Pusher Down_Right(4, 48);            //motor para andar a face da direita no pino 4
+Pusher Down_Back(5, 46);             //motor para andar a face de trás no pino 5
+Pusher Down_Left(6, 47);             //motor para andar a face da esquerda no pino 6
+Pusher Down_Front(7, 46);            //motor para andar a face da frente no pino 7
 
 
 
@@ -235,10 +235,10 @@ void servos_init() {
 
 void servos_test() {
 
-  Down_Front.rmove(0);
-  Down_Back.rmove(0);
-  Down_Right.rmove(0);
-  Down_Left.rmove(0);
+  Down_Right.rmove(place[0]);
+  Down_Back.rmove(place[0]);
+  Down_Left.rmove(place[0]);
+  Down_Front.rmove(place[0]);
 //  for(int i = 10; i < 60; i++) {
 //    Down_Front.rmove(i);
 //    Down_Back.rmove(i);
@@ -349,8 +349,10 @@ void ServosFace_BackCCW() {
 //RotaÃ§Ãµes dos motores para rodar o cubo no sentido de R (movimento x e x`):
 //__________________________________________________________________________
 
+#define aperto (1)
+
+
 void ServosCube_MoveX() {
-  int aperto = 4;
 
   Down_Front.rmove(place[2]);
   Down_Back.rmove(place[2]);
@@ -378,7 +380,6 @@ void ServosCube_MoveX() {
 }
 
 void ServosCube_Movex() {
-  int aperto = 4;
   
   Down_Front.rmove(place[2]);
   Down_Back.rmove(place[2]);
@@ -410,7 +411,6 @@ void ServosCube_Movex() {
 //_________________________________________________________________________
 
 void ServosCube_MoveZ() {
-  int aperto = 4;
   
   Down_Right.rmove(place[2]);
   Down_Left.rmove(place[2]);
@@ -438,7 +438,6 @@ void ServosCube_MoveZ() {
 }
 
 void ServosCube_Movez() {
-  int aperto = 4;
 
   Down_Right.rmove(place[2]);
   Down_Left.rmove(place[2]);

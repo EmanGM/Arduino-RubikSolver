@@ -170,6 +170,8 @@ void Menu_Process() {
         servos_init();
         rubik.Print();
         break;
+      default:
+        Serial.print(F("Comando Invalido"));
     }
   }
 }

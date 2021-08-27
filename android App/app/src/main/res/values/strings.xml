@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">RubikSensor</string>
+
+
+    //Bluethoot Activity
+    <string name="startHC_05"> Conectar a HC-05 e iniciar </string>
+    <string name="atualizarBluethootdevices"> Atualizar </string>
+
+    //Main activity
+    <string name="escolherCuboTipo"> Escolhe o tipo de cubo </string>
+    <string name="captureImage"> Capturar Imagem </string>
+    <string name="sairCameraAct"> Sair </string>
+</resources>

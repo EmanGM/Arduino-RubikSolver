@@ -1,4 +1,5 @@
 #define DELAY_BETWEEN_STEPS1 (500) 
+#define APERTO (4)
 
 
 static clearVision() {
@@ -6,8 +7,8 @@ static clearVision() {
   Down_Right.rmove(place[3]);
   Down_Left.rmove(place[3]);
   delay(DELAY_BETWEEN_STEPS1);
-  Down_Front.rmove(place[1] + 5);
-  Down_Back.rmove(place[1] + 5);
+  Down_Front.rmove(place[1] + APERTO);
+  Down_Back.rmove(place[1] + APERTO);
   delay(DELAY_BETWEEN_STEPS1);
   Up_Back.Rotate(0);
   Up_Front.Rotate(180);
@@ -28,8 +29,8 @@ void sequencia_de_armazenamento() {
    Down_Front.rmove(place[1]);
    Down_Back.rmove(place[1]);
    delay(DELAY_BETWEEN_STEPS1);
-   Down_Right.rmove(place[1] + 5);
-   Down_Left.rmove(place[1] + 5);
+   Down_Right.rmove(place[1] + APERTO);
+   Down_Left.rmove(place[1] + APERTO);
    delay(DELAY_BETWEEN_STEPS1);
    Down_Front.rmove(place[3]);
    Down_Back.rmove(place[3]);
@@ -47,6 +48,9 @@ void sequencia_de_armazenamento() {
    Down_Right.rmove(place[1]);
    Down_Left.rmove(place[1]);
    delay(DELAY_BETWEEN_STEPS1);
+   Down_Back.rmove(place[1]);
+   Down_Front.rmove(place[1]);
+   delay(DELAY_BETWEEN_STEPS1);
    ServosCube_MoveZ();
    //face 4 = front
    clearVision();
@@ -59,5 +63,10 @@ void sequencia_de_armazenamento() {
    Up_Front.Rotate(90);
    Down_Front.rmove(place[1]);
    Down_Back.rmove(place[1]);
+   delay(DELAY_BETWEEN_STEPS1);
+   Down_Left.rmove(place[1]);
+   Down_Right.rmove(place[1]);
+   delay(DELAY_BETWEEN_STEPS1);
+   ServosCube_Movez();
    delay(DELAY_BETWEEN_STEPS1);
 }

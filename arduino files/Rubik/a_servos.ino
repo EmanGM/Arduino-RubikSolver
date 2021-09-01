@@ -198,14 +198,14 @@ class Pusher : public RServo {
 };
 
 
-Rotater Up_Right(0, 0, 400, 0);             //motor para rodar a face da direita no pino 0
+Rotater Up_Right(0, 5, 405, 0);             //motor para rodar a face da direita no pino 0
 Rotater Up_Back(1, 0, 400, 0);              //motor para rodar a face de trás no pino 1
 Rotater Up_Left(2, 0, 400, 0);              //motor para rodar a face da esquerda no pino 2
-Rotater Up_Front(3, -10, 390, 0);             //motor para rodar a face da frente no pino 3
+Rotater Up_Front(3, -20, 380, 0);             //motor para rodar a face da frente no pino 3
 
-Pusher Down_Right(4, 48);            //motor para andar a face da direita no pino 4
-Pusher Down_Back(5, 46);             //motor para andar a face de trás no pino 5
-Pusher Down_Left(6, 47);             //motor para andar a face da esquerda no pino 6
+Pusher Down_Right(4, 46);            //motor para andar a face da direita no pino 4
+Pusher Down_Back(5, 47);             //motor para andar a face de trás no pino 5
+Pusher Down_Left(6, 48);             //motor para andar a face da esquerda no pino 6
 Pusher Down_Front(7, 46);            //motor para andar a face da frente no pino 7
 
 
@@ -235,10 +235,10 @@ void servos_init() {
 
 void servos_test() {
 
-  Down_Right.rmove(place[0]);
-  Down_Back.rmove(place[0]);
-  Down_Left.rmove(place[0]);
-  Down_Front.rmove(place[0]);
+//  Down_Right.rmove(place[0]);
+//  Down_Back.rmove(place[0]);
+//  Down_Left.rmove(place[0]);
+//  Down_Front.rmove(place[0]);
 //  for(int i = 10; i < 60; i++) {
 //    Down_Front.rmove(i);
 //    Down_Back.rmove(i);
@@ -246,30 +246,30 @@ void servos_test() {
 //    delay(50);
 //  }
 //  delay(2000);
-//  ServosFace_RightCW();
-//  delay(500);
-//  ServosFace_BackCW();
-//  delay(500);
-//  ServosFace_LeftCW();
-//  delay(500);
-//  ServosFace_FrontCW();
-//  delay(500);
-//  ServosCube_MoveX();
-//  delay(1000);
-//  ServosCube_Movex();
-//  delay(1000);
-//  ServosCube_MoveZ();
-//  delay(1000);
-//  ServosCube_Movez();
-//  delay(1000);
-//  ServosFace_RightCCW();
-//  delay(1000);
-//  ServosFace_BackCCW();
-//  delay(500);
-//  ServosFace_LeftCCW();
-//  delay(500);
-//  ServosFace_FrontCCW();
-//  delay(500);
+  ServosFace_RightCW();
+  delay(500);
+  ServosFace_BackCW();
+  delay(500);
+  ServosFace_LeftCW();
+  delay(500);
+  ServosFace_FrontCW();
+  delay(500);
+  ServosCube_MoveX();
+  delay(1000);
+  ServosCube_Movex();
+  delay(1000);
+  ServosCube_MoveZ();
+  delay(1000);
+  ServosCube_Movez();
+  delay(1000);
+  ServosFace_RightCCW();
+  delay(1000);
+  ServosFace_BackCCW();
+  delay(500);
+  ServosFace_LeftCCW();
+  delay(500);
+  ServosFace_FrontCCW();
+  delay(500);
 }
 
 
@@ -349,7 +349,7 @@ void ServosFace_BackCCW() {
 //RotaÃ§Ãµes dos motores para rodar o cubo no sentido de R (movimento x e x`):
 //__________________________________________________________________________
 
-#define aperto (1)
+#define aperto (2)
 
 
 void ServosCube_MoveX() {
@@ -384,12 +384,12 @@ void ServosCube_Movex() {
   Down_Front.rmove(place[2]);
   Down_Back.rmove(place[2]);
   delay(DELAY_BETWEEN_STEPS);
-  Down_Right.rmove(aperto);      //
-  Down_Left.rmove(aperto);       //
-  delay(100);                //
+  Down_Right.rmove(aperto);      
+  Down_Left.rmove(aperto);       
+  delay(100);                
   Up_Right.Rotate(0);
   Up_Left.Rotate(180);
-  delay(160);
+  delay(200);
   Down_Front.rmove(place[1] + aperto);
   Down_Back.rmove(place[1] + aperto);
   delay(DELAY_BETWEEN_STEPS2);                      
@@ -420,7 +420,7 @@ void ServosCube_MoveZ() {
   delay(100);                //
   Up_Front.Rotate(0);
   Up_Back.Rotate(180);
-  delay(160);
+  delay(180);
   Down_Right.rmove(place[1] + aperto);
   Down_Left.rmove(place[1] + aperto);
   delay(DELAY_BETWEEN_STEPS2);                      
@@ -447,7 +447,7 @@ void ServosCube_Movez() {
   delay(100);                //
   Up_Front.Rotate(180);
   Up_Back.Rotate(0);
-  delay(160);
+  delay(180);
   Down_Right.rmove(place[1] + aperto);
   Down_Left.rmove(place[1] + aperto);
   delay(DELAY_BETWEEN_STEPS2);                     

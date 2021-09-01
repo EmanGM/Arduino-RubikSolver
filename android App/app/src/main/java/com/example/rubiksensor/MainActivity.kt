@@ -32,6 +32,13 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<ImageButton>(R.id.stikersOp).setOnClickListener {
             val intent = Intent(this, CameraActivity::class.java)
+            intent.putExtra("modeIsStikers", true)
+            startActivity(intent)
+        }
+
+        findViewById<ImageButton>(R.id.stikerlessOp).setOnClickListener {
+            val intent = Intent(this, CameraActivity::class.java)
+            intent.putExtra("modeIsStikers", false)
             startActivity(intent)
         }
     }

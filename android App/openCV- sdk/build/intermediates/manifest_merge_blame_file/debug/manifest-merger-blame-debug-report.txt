@@ -6,8 +6,8 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="21"
-8-->C:\Users\Emanuel\OneDrive\Ambiente de Trabalho\Testes de arduino\Rubik Project\rubik-v.0.3.0\openCV- sdk\java\AndroidManifest.xml
+8-->C:\Users\Emanuel\OneDrive\Ambiente de Trabalho\Testes de arduino\Rubik Project\rubik-v.0.3.0\android App\openCV- sdk\java\AndroidManifest.xml
 9        android:targetSdkVersion="26" />
-9-->C:\Users\Emanuel\OneDrive\Ambiente de Trabalho\Testes de arduino\Rubik Project\rubik-v.0.3.0\openCV- sdk\java\AndroidManifest.xml
+9-->C:\Users\Emanuel\OneDrive\Ambiente de Trabalho\Testes de arduino\Rubik Project\rubik-v.0.3.0\android App\openCV- sdk\java\AndroidManifest.xml
 10
 11</manifest>

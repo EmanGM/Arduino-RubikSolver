@@ -91,6 +91,7 @@ class CameraActivity : Activity(), CameraBridgeViewBase.CvCameraViewListener2 {
             Log.d("CameraActivity", "Permissions granted")
             cameraView.setCameraPermissionGranted()
         }
+
     }
 
 

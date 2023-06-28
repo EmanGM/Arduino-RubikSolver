@@ -1,0 +1,1 @@
+### APK file is available at [this](./app/build/outputs/apk/debug/) location.

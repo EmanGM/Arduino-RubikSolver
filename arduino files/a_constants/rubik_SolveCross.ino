@@ -1,6 +1,6 @@
 
 void Solve_WhiteCross_1 () {
-  //Procurar edges com a cor branca na face de baixo
+  //Search for edges with white stckers on bottom face
   if(Rubik[RF_DOWN][1] == RC_WHITE){
     switch(Rubik[RF_BACK][1]) {
       case RC_RED:    rubik.RotateStr("dd"); break;
@@ -41,7 +41,7 @@ void Solve_WhiteCross_1 () {
 void Solve_WhiteCross_2() {
     int side_color;
     int rot = 0;
-    //Procurar por edges com a cor branca na face de cima
+    //Search for edges with white stckers on top face
     if (Rubik[RF_UP][1] == RC_WHITE) {
         side_color = Rubik[RF_FRONT][7];
         rot -= 0;
@@ -66,7 +66,7 @@ void Solve_WhiteCross_2() {
     }
     
     if(rot == 0) {
-        rubik.RotateStr(""); // nÃ£o ReadColor nada
+        rubik.RotateStr(""); // no rotation
     } else if (rot == -3 || rot == 1) {
         rubik.RotateStr("u"); // Up counter clock wise
     } else if (rot == 2 || rot == -2){
@@ -81,14 +81,13 @@ void Solve_WhiteCross_2() {
       case RC_ORANGE: rubik.RotateStr("BB"); break;
       case RC_BLUE:   rubik.RotateStr("LL"); break;
     }
-    // no final voltamos a tentar recursivamente atÃ© nÃ£o haver mais faces
-    // brancas em cima
+    //In the end search recursivly until no more white stickers in top face
     Solve_WhiteCross_2();
 }
 
 
 void Solve_WhiteCross_3() {
-//Procurar por edges com a cor branca nas faces laterais da camada de cima
+    //Search for edges with white stckers on the lateral of the top face
     if (Rubik[RF_FRONT][7] == RC_WHITE) {
         switch(Rubik[RF_UP][1]) {
           case RC_RED:    rubik.RotateStr("urFR"); break;
@@ -120,13 +119,12 @@ void Solve_WhiteCross_3() {
     } else {
         return;
     }
-    // no final voltamos a tentar recursivamente atÃ© nÃ£o haver mais
     Solve_WhiteCross_2();
     Solve_WhiteCross_3();
 }
 
 void Solve_WhiteCross_4() {
-  //Procurar por edges com a cor branca nos sÃ­tios 3 e 5 das faces da frente e de trÃ¡s
+  //Search for edges with white stckers on places 3 and 5 from front and back faces
   if ((Rubik[RF_FRONT][3] == RC_WHITE) && (Rubik[RF_LEFT][5] != RC_BLUE)){
     rubik.RotateStr("lUL");
   } else if ((Rubik[RF_FRONT][3] == RC_WHITE) && (Rubik[RF_LEFT][5] == RC_BLUE)){
@@ -144,8 +142,8 @@ void Solve_WhiteCross_4() {
   } else if ((Rubik[RF_BACK][5] == RC_WHITE) && (Rubik[RF_LEFT][3] == RC_BLUE)){
     rubik.RotateStr("l");
   } else {
-      // Se nÃ£o hÃ¡ faces brancas em cima, terminamos!
-//      Serial.println("(None)  ");
+      //If no with white stckers on top face, we are done!
+      //Serial.println("(None)  ");
       return;
   }
   
@@ -156,7 +154,7 @@ void Solve_WhiteCross_4() {
 
 
 void Solve_WhiteCross_5() {
-  //Procurar por edges com a cor branca nos sÃ­tios 3 e 5 das faces da esquerda e da direita
+  //Search for edges with white stckers on places 3 and 5 from faces left and right
   if ((Rubik[RF_LEFT][3] == RC_WHITE) && (Rubik[RF_BACK][5] != RC_ORANGE)){
     rubik.RotateStr("buB");
   } else if ((Rubik[RF_LEFT][3] == RC_WHITE) && (Rubik[RF_BACK][5] == RC_ORANGE)){

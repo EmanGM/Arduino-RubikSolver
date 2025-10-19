@@ -91,7 +91,7 @@ const char * const OLL_LUT[64] PROGMEM = {
 //  "RUrurFRf";                              // 13
 //  "uuLfluLUFul";                           // 14
 //  "lRUruLrFRf";                            // 15
-//  "RuurruRuruuFRf";                        // 16   |----------|          //Mudar de alg. Manual nÂº15 e nÂº16
+//  "RuurruRuruuFRf";                        // 16   |----------|          
 //  "UUruRurUfUFR";                          // 17   |    ##    |
 //  "UrfRluLUrFR";                           // 18   |    ##    |
 //  "rFRUrfRFuf";                            // 19   |    ##    |

@@ -1,5 +1,5 @@
 #define DELAY_BETWEEN_STEPS1 (500) 
-#define APERTO (4)
+#define AJDUSTMENT (4)
 
 
 static void clearVision() {
@@ -7,15 +7,15 @@ static void clearVision() {
   Down_Right.rmove(place[3]);
   Down_Left.rmove(place[3]);
   delay(DELAY_BETWEEN_STEPS1);
-  Down_Front.rmove(place[1] + APERTO);
-  Down_Back.rmove(place[1] + APERTO);
+  Down_Front.rmove(place[1] + AJDUSTMENT);
+  Down_Back.rmove(place[1] + AJDUSTMENT);
   delay(DELAY_BETWEEN_STEPS1);
   Up_Back.Rotate(0);
   Up_Front.Rotate(180);
   
 }
 
-void sequencia_de_armazenamento() {
+void storing_sequence() {
 
    //face 0 = right
    clearVision();
@@ -29,8 +29,8 @@ void sequencia_de_armazenamento() {
    Down_Front.rmove(place[1]);
    Down_Back.rmove(place[1]);
    delay(DELAY_BETWEEN_STEPS1);
-   Down_Right.rmove(place[1] + APERTO);
-   Down_Left.rmove(place[1] + APERTO);
+   Down_Right.rmove(place[1] + AJDUSTMENT);
+   Down_Left.rmove(place[1] + AJDUSTMENT);
    delay(DELAY_BETWEEN_STEPS1);
    Down_Front.rmove(place[3]);
    Down_Back.rmove(place[3]);

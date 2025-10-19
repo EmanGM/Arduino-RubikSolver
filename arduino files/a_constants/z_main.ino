@@ -9,7 +9,7 @@ void setup() {
   delay(2000);
   //SetColorPoints();
   rubik.Init();
-  sequencia_de_armazenamento();
+  storing_sequence();
   rubik.Print();
   //servos_test();
   Menu_Print();

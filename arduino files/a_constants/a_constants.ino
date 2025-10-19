@@ -1,11 +1,11 @@
 enum Rubik_Faces {
-    RF_FRONT,   //0
-    RF_UP,      //1
-    RF_LEFT,    //2
-    RF_RIGHT,   //3
-    RF_DOWN,    //4
-    RF_BACK,    //5
-    RF_TOTAL_FACES, //6 (número total de faces)
+    RF_FRONT,       //0
+    RF_UP,          //1
+    RF_LEFT,        //2
+    RF_RIGHT,       //3
+    RF_DOWN,        //4
+    RF_BACK,        //5
+    RF_TOTAL_FACES, //6 (total number of faces)
 };
 
 //const char* Rubik_FaceName[] = {

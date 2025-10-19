@@ -2,8 +2,8 @@
 void Menu_Print() {
   Serial.println(F("M E N U"));
   Serial.println(F("=============="));
-  Serial.println(F("i   Iniciar cubo montado"));
-  Serial.println(F("a   Afinar motores"));
+  Serial.println(F("i   Initialize solved cube"));
+  Serial.println(F("a   Adjust motors"));
 //  Serial.println(F("F   Rotate front ClockWise"));
 //  Serial.println(F("f   Rotate front Counter-ClockWise"));
 //  Serial.println(F("R   Rotate right ClockWise"));
@@ -16,7 +16,7 @@ void Menu_Print() {
 //  Serial.println(F("d   Rotate down Conter-ClockWise"));
 //  Serial.println(F("B   Rotate back ClockWise"));
 //  Serial.println(F("b   Rotate back Conter-ClockWise"));
-  Serial.println(F("s   scamble the cube"));
+  Serial.println(F("s   Scamble the cube"));
   Serial.println(F("S   Solve the Cube"));
   Serial.println(F(""));
 }
@@ -34,7 +34,7 @@ void Menu_Process() {
           rubik.Print();
           break;
         case 'a':
-          Serial.println(F("escolha o motor a afinar\n"));
+          Serial.println(F("choose the motor to adjust\n"));
           while(Serial.available() == 0) {}
             switch(Serial.read()) {
               case 'B':
@@ -59,7 +59,6 @@ void Menu_Process() {
                 }
                 break;
             }
-          //}
           break;
      case 'f':  
         rubik.RotateFrontCCW();  
@@ -148,7 +147,7 @@ void Menu_Process() {
         ServosCube_Movey();
         break;
       case 's':
-        rubik.Sramble(30);
+        rubik.Scramble(30);
         rubik.Print();
         break;
       case 'm':
@@ -156,7 +155,6 @@ void Menu_Process() {
         break;
       case 'M':
         rubik.Init();
-        //sequencia_de_armazenamento();
         break;
       case 'S':                                   
         Serial.print(F("Solving the cube.")); delay(600);
@@ -171,7 +169,7 @@ void Menu_Process() {
         rubik.Print();
         break;
       default:
-        Serial.print(F("Comando Invalido"));
+        Serial.print(F("Invalid command"));
     }
   }
 }

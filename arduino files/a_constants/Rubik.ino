@@ -8,7 +8,7 @@ class Cubo {
       
     }
     void Init() {
-      // preencher cores
+      // fill colors
       //________________________________________________________________
       int face;
       int i;
@@ -250,13 +250,13 @@ class Cubo {
       Print();
     }
   
-    void Sramble(int rotations_count) {
+    void Scramble(int rotations_count) {
       static const char rotations[] = {'f', 'F', 'r', 'R', 'u', 'U', 'l', 'L', 'd', 'D', 'b', 'B'};
     
-      randomSeed(millis()); // iniciar gerador peseudo-aleatório
+      randomSeed(millis());
       
       for (int i = 0; i < rotations_count; i++) {
-        char i_rot = random(sizeof(rotations)); // gerar nÃºmero aleatÃ³rio entre 0 e o número de opÃ§Ãµes de rotaÃ§Ã£o (tamanho do array rotations - 12)
+        char i_rot = random(sizeof(rotations));
         Rubik_Rotate(rotations[i_rot], false);
       }
       Serial.println(F("\n"));
@@ -311,10 +311,10 @@ class Cubo {
 Cubo rubik;
 
 //__________________________________________________________________________________
-// RotaÃ§Ãµes:
+// Rotations:
 //__________________________________________________________________________________
 //
-// RotaÃ§Ã£o da face da frente:
+// Rotations of the front face:
 //____________________________________________________________
 
 void Cubo::RotateFrontCCW () {
@@ -329,19 +329,19 @@ void Cubo::RotateFrontCCW () {
   Rubik[RF_FRONT][5] = Rubik_Backup[RF_FRONT][1];
   Rubik[RF_FRONT][7] = Rubik_Backup[RF_FRONT][5];
   Rubik[RF_FRONT][3] = Rubik_Backup[RF_FRONT][7];
-  //3 peÃ§as de cima movem-se para a esquerda
+  //3 pieces from the top go to the left
   Rubik[RF_UP][0] = Rubik_Backup[RF_RIGHT][6];
   Rubik[RF_UP][1] = Rubik_Backup[RF_RIGHT][3];
   Rubik[RF_UP][2] = Rubik_Backup[RF_RIGHT][0];
-  //3 peÃ§as da direita movem-se para cima
+  //3 pieces from the right go to the top
   Rubik[RF_RIGHT][6] = Rubik_Backup[RF_DOWN][8];
   Rubik[RF_RIGHT][3] = Rubik_Backup[RF_DOWN][7];
   Rubik[RF_RIGHT][0] = Rubik_Backup[RF_DOWN][6];
-  //3 peÃ§as de baixo movem-se para a direita
+  //3 pieces from the bottom go to the right
   Rubik[RF_DOWN][8] = Rubik_Backup[RF_LEFT][2];
   Rubik[RF_DOWN][7] = Rubik_Backup[RF_LEFT][5];
   Rubik[RF_DOWN][6] = Rubik_Backup[RF_LEFT][8];
-  //3 peÃ§as da esquerda movem-se para baixo
+  //3 pieces from the left go to the bottomn
   Rubik[RF_LEFT][2] = Rubik_Backup[RF_UP][0];
   Rubik[RF_LEFT][5] = Rubik_Backup[RF_UP][1];
   Rubik[RF_LEFT][8] = Rubik_Backup[RF_UP][2];
@@ -359,52 +359,52 @@ void Cubo::RotateFrontCW () {
   Rubik[RF_FRONT][5] = Rubik_Backup[RF_FRONT][7];
   Rubik[RF_FRONT][7] = Rubik_Backup[RF_FRONT][3];
   Rubik[RF_FRONT][3] = Rubik_Backup[RF_FRONT][1];
-  //3 peÃ§as de cima movem-se para a direita
+  //3 pieces de cima movem-se para a direita
   Rubik[RF_UP][0] = Rubik_Backup[RF_LEFT][2];
   Rubik[RF_UP][1] = Rubik_Backup[RF_LEFT][5];
   Rubik[RF_UP][2] = Rubik_Backup[RF_LEFT][8];
-  //3 peÃ§as da direita movem-se para baixo
+  //3 pieces da direita movem-se para baixo
   Rubik[RF_RIGHT][6] = Rubik_Backup[RF_UP][0];
   Rubik[RF_RIGHT][3] = Rubik_Backup[RF_UP][1];
   Rubik[RF_RIGHT][0] = Rubik_Backup[RF_UP][2];
-  //3 peÃ§as de baixo movem-se para a esquerda
+  //3 pieces de baixo movem-se para a esquerda
   Rubik[RF_DOWN][8] = Rubik_Backup[RF_RIGHT][6];
   Rubik[RF_DOWN][7] = Rubik_Backup[RF_RIGHT][3];
   Rubik[RF_DOWN][6] = Rubik_Backup[RF_RIGHT][0];
-  //3 peÃ§as da esquerda movem-se para cima
+  //3 pieces da esquerda movem-se para cima
   Rubik[RF_LEFT][2] = Rubik_Backup[RF_DOWN][8];
   Rubik[RF_LEFT][5] = Rubik_Backup[RF_DOWN][7];
   Rubik[RF_LEFT][8] = Rubik_Backup[RF_DOWN][6];
 }
 
 
-// RotaÃ§Ã£o da face da direita:
+// Rotations of the right face:
 //________________________________________________________________
 void Cubo::RotateRightCW () {
   MakeBackup();
-  //Cantos da direita
+  //Corners
   Rubik[RF_RIGHT][0] = Rubik_Backup[RF_RIGHT][2];
   Rubik[RF_RIGHT][2] = Rubik_Backup[RF_RIGHT][8];
   Rubik[RF_RIGHT][8] = Rubik_Backup[RF_RIGHT][6];
   Rubik[RF_RIGHT][6] = Rubik_Backup[RF_RIGHT][0];
-  //Eges da direita
+  //Edges
   Rubik[RF_RIGHT][1] = Rubik_Backup[RF_RIGHT][5];
   Rubik[RF_RIGHT][5] = Rubik_Backup[RF_RIGHT][7];
   Rubik[RF_RIGHT][7] = Rubik_Backup[RF_RIGHT][3];
   Rubik[RF_RIGHT][3] = Rubik_Backup[RF_RIGHT][1];
-  //3 peÃ§as de cima movem-se para trÃ¡s.
+  //3 pieces from the top go to the back
   Rubik[RF_UP][2] = Rubik_Backup[RF_FRONT][2];
   Rubik[RF_UP][5] = Rubik_Backup[RF_FRONT][5];
   Rubik[RF_UP][8] = Rubik_Backup[RF_FRONT][8];
-  //3 peÃ§as de trÃ¡s movem-se para baixo
+  //3 pieces from the back go to the bottom
   Rubik[RF_BACK][6] = Rubik_Backup[RF_UP][2];
   Rubik[RF_BACK][3] = Rubik_Backup[RF_UP][5];
   Rubik[RF_BACK][0] = Rubik_Backup[RF_UP][8];
-  //3 peÃ§as de baixo movem-se para a frente
+  //3 pieces from the bottom go to the front
   Rubik[RF_DOWN][2] = Rubik_Backup[RF_BACK][6];
   Rubik[RF_DOWN][5] = Rubik_Backup[RF_BACK][3];
   Rubik[RF_DOWN][8] = Rubik_Backup[RF_BACK][0];
-  //3 peÃ§as da frente movem-se para cima
+  //3 pieces from the front go to the top
   Rubik[RF_FRONT][2] = Rubik_Backup[RF_DOWN][2];
   Rubik[RF_FRONT][5] = Rubik_Backup[RF_DOWN][5];
   Rubik[RF_FRONT][8] = Rubik_Backup[RF_DOWN][8];
@@ -412,62 +412,62 @@ void Cubo::RotateRightCW () {
 
 void Cubo::RotateRightCCW () {
   MakeBackup();
-  //Cantos da direita
+  //Corners
   Rubik[RF_RIGHT][0] = Rubik_Backup[RF_RIGHT][6];
   Rubik[RF_RIGHT][2] = Rubik_Backup[RF_RIGHT][0];
   Rubik[RF_RIGHT][8] = Rubik_Backup[RF_RIGHT][2];
   Rubik[RF_RIGHT][6] = Rubik_Backup[RF_RIGHT][8];
-  //Edges da direita
+  //Edges
   Rubik[RF_RIGHT][1] = Rubik_Backup[RF_RIGHT][3];
   Rubik[RF_RIGHT][5] = Rubik_Backup[RF_RIGHT][1];
   Rubik[RF_RIGHT][7] = Rubik_Backup[RF_RIGHT][5];
   Rubik[RF_RIGHT][3] = Rubik_Backup[RF_RIGHT][7];
-  //3 peÃ§as de cima movem-se para a frente
+  //3 pieces from the up face go to the front
   Rubik[RF_UP][8] = Rubik_Backup[RF_BACK][0];
   Rubik[RF_UP][5] = Rubik_Backup[RF_BACK][3];
   Rubik[RF_UP][2] = Rubik_Backup[RF_BACK][6];
-  //3 peÃ§as da frente movem-se para baixo
+  //3 pieces from the front go to the bottom
   Rubik[RF_FRONT][8] = Rubik_Backup[RF_UP][8];
   Rubik[RF_FRONT][5] = Rubik_Backup[RF_UP][5];
   Rubik[RF_FRONT][2] = Rubik_Backup[RF_UP][2];
-  //3 peÃ§as de baixo movem-se para trÃ¡s
+  //3 pieces from the bottom go to the back
   Rubik[RF_DOWN][8] = Rubik_Backup[RF_FRONT][8];
   Rubik[RF_DOWN][5] = Rubik_Backup[RF_FRONT][5];
   Rubik[RF_DOWN][2] = Rubik_Backup[RF_FRONT][2];
-  //3 peÃ§as de trÃ¡s movem-se para cima
+  //3 pieces from the back go to the back
   Rubik[RF_BACK][0] = Rubik_Backup[RF_DOWN][8];
   Rubik[RF_BACK][3] = Rubik_Backup[RF_DOWN][5];
   Rubik[RF_BACK][6] = Rubik_Backup[RF_DOWN][2];
 }
 
 
-// RotaÃ§Ã£o da face de cima
+// Rotations of the upper face
 //________________________________________________________________
 void Cubo::RotateUpCW () {
   MakeBackup();
-  //Cantos de cima
+  //Corners
   Rubik[RF_UP][0] = Rubik_Backup[RF_UP][2];
   Rubik[RF_UP][2] = Rubik_Backup[RF_UP][8];
   Rubik[RF_UP][8] = Rubik_Backup[RF_UP][6];
   Rubik[RF_UP][6] = Rubik_Backup[RF_UP][0];
-  //Edges de cima
+  //Edges
   Rubik[RF_UP][1] = Rubik_Backup[RF_UP][5];
   Rubik[RF_UP][5] = Rubik_Backup[RF_UP][7];
   Rubik[RF_UP][7] = Rubik_Backup[RF_UP][3];
   Rubik[RF_UP][3] = Rubik_Backup[RF_UP][1];
-  //3 peÃ§as de trÃ¡s movem-se para a direita
+  //3 pieces from the back go to the right
   Rubik[RF_BACK][8] = Rubik_Backup[RF_LEFT][8];
   Rubik[RF_BACK][7] = Rubik_Backup[RF_LEFT][7];
   Rubik[RF_BACK][6] = Rubik_Backup[RF_LEFT][6];
-  //3 peÃ§as da direita movem-se para a frente
+  //3 pieces from the right go to the front
   Rubik[RF_RIGHT][8] = Rubik_Backup[RF_BACK][8];
   Rubik[RF_RIGHT][7] = Rubik_Backup[RF_BACK][7];
   Rubik[RF_RIGHT][6] = Rubik_Backup[RF_BACK][6];
-  //3 peÃ§as da frente movem-se para a esquerda
+  //3 pieces from the front go to the left
   Rubik[RF_FRONT][8] = Rubik_Backup[RF_RIGHT][8];
   Rubik[RF_FRONT][7] = Rubik_Backup[RF_RIGHT][7];
   Rubik[RF_FRONT][6] = Rubik_Backup[RF_RIGHT][6];
-  //3 peÃ§as da esquerda movem-se para trÃ¡s
+  //3 pieces from the left go to the back
   Rubik[RF_LEFT][8] = Rubik_Backup[RF_FRONT][8];
   Rubik[RF_LEFT][7] = Rubik_Backup[RF_FRONT][7];
   Rubik[RF_LEFT][6] = Rubik_Backup[RF_FRONT][6];
@@ -475,62 +475,62 @@ void Cubo::RotateUpCW () {
 
 void Cubo::RotateUpCCW () {
   MakeBackup();
-  //Cantos de cima
+  //Corners
   Rubik[RF_UP][0] = Rubik_Backup[RF_UP][6];
   Rubik[RF_UP][2] = Rubik_Backup[RF_UP][0];
   Rubik[RF_UP][8] = Rubik_Backup[RF_UP][2];
   Rubik[RF_UP][6] = Rubik_Backup[RF_UP][8];
-  //Edges de cima
+  //Edges
   Rubik[RF_UP][1] = Rubik_Backup[RF_UP][3];
   Rubik[RF_UP][5] = Rubik_Backup[RF_UP][1];
   Rubik[RF_UP][7] = Rubik_Backup[RF_UP][5];
   Rubik[RF_UP][3] = Rubik_Backup[RF_UP][7];
-  //3 peÃ§as de trÃ¡s movem-se para a esquerda
+  //3 pieces from the back go to the left
   Rubik[RF_BACK][6] = Rubik_Backup[RF_RIGHT][6];
   Rubik[RF_BACK][7] = Rubik_Backup[RF_RIGHT][7];
   Rubik[RF_BACK][8] = Rubik_Backup[RF_RIGHT][8];
-  //3 peÃ§as da esquerda movem-se para a frente
+  //3 pieces from the left go to the front
   Rubik[RF_LEFT][6] = Rubik_Backup[RF_BACK][6];
   Rubik[RF_LEFT][7] = Rubik_Backup[RF_BACK][7];
   Rubik[RF_LEFT][8] = Rubik_Backup[RF_BACK][8];
-  //3 peÃ§as de frente movem-se para a direita
+  //3 pieces from the front go to the right
   Rubik[RF_FRONT][6] = Rubik_Backup[RF_LEFT][6];
   Rubik[RF_FRONT][7] = Rubik_Backup[RF_LEFT][7];
   Rubik[RF_FRONT][8] = Rubik_Backup[RF_LEFT][8];
-  //3 peÃ§as da direita movem-se para trÃ¡s
+  //3 pieces from the right got to the back
   Rubik[RF_RIGHT][6] = Rubik_Backup[RF_FRONT][6];
   Rubik[RF_RIGHT][7] = Rubik_Backup[RF_FRONT][7];
   Rubik[RF_RIGHT][8] = Rubik_Backup[RF_FRONT][8];
 }
 
 
-// RotaÃ§Ã£o da face da esquerda
+// Rotations of the left face
 //________________________________________________________________
 void Cubo::RotateLeftCW () {
   MakeBackup();
-  //Cantos da esquerda
+  //Corners
   Rubik[RF_LEFT][0] = Rubik_Backup[RF_LEFT][2];
   Rubik[RF_LEFT][2] = Rubik_Backup[RF_LEFT][8];
   Rubik[RF_LEFT][8] = Rubik_Backup[RF_LEFT][6];
   Rubik[RF_LEFT][6] = Rubik_Backup[RF_LEFT][0];
-  //Edges da esquerda
+  //Edges
   Rubik[RF_LEFT][3] = Rubik_Backup[RF_LEFT][1];
   Rubik[RF_LEFT][1] = Rubik_Backup[RF_LEFT][5];
   Rubik[RF_LEFT][5] = Rubik_Backup[RF_LEFT][7];
   Rubik[RF_LEFT][7] = Rubik_Backup[RF_LEFT][3];
-  //3 peÃ§as de cima movem-se para a frente
+  //3 pieces front up face go to front
   Rubik[RF_UP][6] = Rubik_Backup[RF_BACK][2];
   Rubik[RF_UP][3] = Rubik_Backup[RF_BACK][5];
   Rubik[RF_UP][0] = Rubik_Backup[RF_BACK][8];
-  //3 peÃ§as da frente movem-se para baixo
+  //3 pieces from the front go to the bottom
   Rubik[RF_FRONT][6] = Rubik_Backup[RF_UP][6];
   Rubik[RF_FRONT][3] = Rubik_Backup[RF_UP][3];
   Rubik[RF_FRONT][0] = Rubik_Backup[RF_UP][0];
-  //3 peÃ§as de baixo movem-se para trÃ¡s
+  //3 pieces from the bottom go to the back
   Rubik[RF_DOWN][6] = Rubik_Backup[RF_FRONT][6];
   Rubik[RF_DOWN][3] = Rubik_Backup[RF_FRONT][3];
   Rubik[RF_DOWN][0] = Rubik_Backup[RF_FRONT][0];
-  //3 peÃ§as de trÃ¡s movem-se para cima
+  //3 pieces from the back go to the top
   Rubik[RF_BACK][2] = Rubik_Backup[RF_DOWN][6];
   Rubik[RF_BACK][5] = Rubik_Backup[RF_DOWN][3];
   Rubik[RF_BACK][8] = Rubik_Backup[RF_DOWN][0];
@@ -538,62 +538,62 @@ void Cubo::RotateLeftCW () {
 
 void Cubo::RotateLeftCCW () {
   MakeBackup();
-  //Cantos da esquerda
+  //Corners
   Rubik[RF_LEFT][0] = Rubik_Backup[RF_LEFT][6];
   Rubik[RF_LEFT][2] = Rubik_Backup[RF_LEFT][0];
   Rubik[RF_LEFT][8] = Rubik_Backup[RF_LEFT][2];
   Rubik[RF_LEFT][6] = Rubik_Backup[RF_LEFT][8];
-  //Edges da esquerda
+  //Edges
   Rubik[RF_LEFT][1] = Rubik_Backup[RF_LEFT][3];
   Rubik[RF_LEFT][5] = Rubik_Backup[RF_LEFT][1];
   Rubik[RF_LEFT][7] = Rubik_Backup[RF_LEFT][5];
   Rubik[RF_LEFT][3] = Rubik_Backup[RF_LEFT][7];
-  //3 peÃ§as de cima movem-se para trÃ¡s
+  //3 pieces from the up face go to back
   Rubik[RF_UP][0] = Rubik_Backup[RF_FRONT][0];
   Rubik[RF_UP][3] = Rubik_Backup[RF_FRONT][3];
   Rubik[RF_UP][6] = Rubik_Backup[RF_FRONT][6];
-  //3 peÃ§as de trÃ¡s movem-se para baixo
+  //3 pieces from the back go to the bottom
   Rubik[RF_BACK][8] = Rubik_Backup[RF_UP][0];
   Rubik[RF_BACK][5] = Rubik_Backup[RF_UP][3];
   Rubik[RF_BACK][2] = Rubik_Backup[RF_UP][6];
-  //3 peÃ§as de baixo movem-se para a frente
+  //3 pieces from bottom go to the front
   Rubik[RF_DOWN][0] = Rubik_Backup[RF_BACK][8];
   Rubik[RF_DOWN][3] = Rubik_Backup[RF_BACK][5];
   Rubik[RF_DOWN][6] = Rubik_Backup[RF_BACK][2];
-  //3 peÃ§as da frente movem-se para cima
+  //3 pieces from the from go to the top
   Rubik[RF_FRONT][0] = Rubik_Backup[RF_DOWN][0];
   Rubik[RF_FRONT][3] = Rubik_Backup[RF_DOWN][3];
   Rubik[RF_FRONT][6] = Rubik_Backup[RF_DOWN][6];
 }
 
 
-// RotaÃ§Ã£o da face de baixo
+// Rotations of the bottom face
 //________________________________________________________________
 void Cubo::RotateDownCW () {
   MakeBackup();
-  //Cantos de baixo
+  //Corners
   Rubik[RF_DOWN][6] = Rubik_Backup[RF_DOWN][0];
   Rubik[RF_DOWN][8] = Rubik_Backup[RF_DOWN][6];
   Rubik[RF_DOWN][2] = Rubik_Backup[RF_DOWN][8];
   Rubik[RF_DOWN][0] = Rubik_Backup[RF_DOWN][2];
-  //Edges de baixo
+  //Edges
   Rubik[RF_DOWN][7] = Rubik_Backup[RF_DOWN][3];
   Rubik[RF_DOWN][5] = Rubik_Backup[RF_DOWN][7];
   Rubik[RF_DOWN][1] = Rubik_Backup[RF_DOWN][5];
   Rubik[RF_DOWN][3] = Rubik_Backup[RF_DOWN][1];
-  //3 peÃ§as da frente movem-se para a direita
+  //3 pieces from the front go to the right
   Rubik[RF_FRONT][0] = Rubik_Backup[RF_LEFT][0];
   Rubik[RF_FRONT][1] = Rubik_Backup[RF_LEFT][1];
   Rubik[RF_FRONT][2] = Rubik_Backup[RF_LEFT][2];
-  //3 peÃ§as da direita movem-se para trÃ¡s
+  //3 pieces from the right go to the back
   Rubik[RF_RIGHT][0] = Rubik_Backup[RF_FRONT][0];
   Rubik[RF_RIGHT][1] = Rubik_Backup[RF_FRONT][1];
   Rubik[RF_RIGHT][2] = Rubik_Backup[RF_FRONT][2];
-  //3 peÃ§as e trÃ¡s movem-se para a esquerda
+  //3 pieces from the back go to the left
   Rubik[RF_BACK][0] = Rubik_Backup[RF_RIGHT][0];
   Rubik[RF_BACK][1] = Rubik_Backup[RF_RIGHT][1];
   Rubik[RF_BACK][2] = Rubik_Backup[RF_RIGHT][2];
-  //3 peÃ§as da esquerda movem-se para a frente
+  //3 pieces from the left go to the front
   Rubik[RF_LEFT][0] = Rubik_Backup[RF_BACK][0];
   Rubik[RF_LEFT][1] = Rubik_Backup[RF_BACK][1];
   Rubik[RF_LEFT][2] = Rubik_Backup[RF_BACK][2];
@@ -601,61 +601,61 @@ void Cubo::RotateDownCW () {
 
 void Cubo::RotateDownCCW () {
   MakeBackup();
-  //Cantos de baixo
+  //Corners
   Rubik[RF_DOWN][6] = Rubik_Backup[RF_DOWN][8];
   Rubik[RF_DOWN][0] = Rubik_Backup[RF_DOWN][6];
   Rubik[RF_DOWN][2] = Rubik_Backup[RF_DOWN][0];
   Rubik[RF_DOWN][8] = Rubik_Backup[RF_DOWN][2];
-  //Edges de baixo
+  //Edges
   Rubik[RF_DOWN][7] = Rubik_Backup[RF_DOWN][5];
   Rubik[RF_DOWN][3] = Rubik_Backup[RF_DOWN][7];
   Rubik[RF_DOWN][1] = Rubik_Backup[RF_DOWN][3];
   Rubik[RF_DOWN][5] = Rubik_Backup[RF_DOWN][1];
-  //3 peÃ§as da frente movem-se para a esquerda
+  //3 pieces from the front go to the left
   Rubik[RF_FRONT][2] = Rubik_Backup[RF_RIGHT][2];
   Rubik[RF_FRONT][1] = Rubik_Backup[RF_RIGHT][1];
   Rubik[RF_FRONT][0] = Rubik_Backup[RF_RIGHT][0];
-  //3 peÃ§as da esquerda movem-se para trÃ¡s
+  //3 pieces from the left go to the back
   Rubik[RF_LEFT][2] = Rubik_Backup[RF_FRONT][2];
   Rubik[RF_LEFT][1] = Rubik_Backup[RF_FRONT][1];
   Rubik[RF_LEFT][0] = Rubik_Backup[RF_FRONT][0];
-  //3 peÃ§as e trÃ¡s movem-se para a direita
+  //3 pieces from the back go to the right
   Rubik[RF_BACK][2] = Rubik_Backup[RF_LEFT][2];
   Rubik[RF_BACK][1] = Rubik_Backup[RF_LEFT][1];
   Rubik[RF_BACK][0] = Rubik_Backup[RF_LEFT][0];
-  //3 peÃ§as da direita movem-se para a frente
+  //3 pieces from the right go to the front
   Rubik[RF_RIGHT][2] = Rubik_Backup[RF_BACK][2];
   Rubik[RF_RIGHT][1] = Rubik_Backup[RF_BACK][1];
   Rubik[RF_RIGHT][0] = Rubik_Backup[RF_BACK][0];
 }
 
-// RotaÃ§Ã£o da face de trÃ¡s
+// Rotations of the back face
 //________________________________________________________________
 void Cubo::RotateBackCW () {
   MakeBackup();
-  //Cantos de trÃ¡s
+  //Corners
   Rubik[RF_BACK][0] = Rubik_Backup[RF_BACK][2];
   Rubik[RF_BACK][6] = Rubik_Backup[RF_BACK][0];
   Rubik[RF_BACK][8] = Rubik_Backup[RF_BACK][6];
   Rubik[RF_BACK][2] = Rubik_Backup[RF_BACK][8];
-  //Edges de trÃ¡s
+  //Edges
   Rubik[RF_BACK][1] = Rubik_Backup[RF_BACK][5];
   Rubik[RF_BACK][3] = Rubik_Backup[RF_BACK][1];
   Rubik[RF_BACK][7] = Rubik_Backup[RF_BACK][3];
   Rubik[RF_BACK][5] = Rubik_Backup[RF_BACK][7];
-  //3 peÃ§as de cima movem-se para a direita
+  //3 pieces from the up face go to the right
   Rubik[RF_UP][8] = Rubik_Backup[RF_RIGHT][2];
   Rubik[RF_UP][7] = Rubik_Backup[RF_RIGHT][5];
   Rubik[RF_UP][6] = Rubik_Backup[RF_RIGHT][8];
-  //3 peÃ§as da direita movem-se para baixo
+  //3 pieces from the right go to the bottom
   Rubik[RF_LEFT][6] = Rubik_Backup[RF_UP][8];
   Rubik[RF_LEFT][3] = Rubik_Backup[RF_UP][7];
   Rubik[RF_LEFT][0] = Rubik_Backup[RF_UP][6];
-  //3 peÃ§as de baixo movem-se para a esquerda
+  //3 pieces from the bottom go to the left
   Rubik[RF_DOWN][0] = Rubik_Backup[RF_LEFT][6];
   Rubik[RF_DOWN][1] = Rubik_Backup[RF_LEFT][3];
   Rubik[RF_DOWN][2] = Rubik_Backup[RF_LEFT][0];
-  //3 peÃ§as de esquerda movem-se para cima
+  //3 pieces from the left got to the top
   Rubik[RF_RIGHT][2] = Rubik_Backup[RF_DOWN][0];
   Rubik[RF_RIGHT][5] = Rubik_Backup[RF_DOWN][1];
   Rubik[RF_RIGHT][8] = Rubik_Backup[RF_DOWN][2];
@@ -663,29 +663,29 @@ void Cubo::RotateBackCW () {
 
 void Cubo::RotateBackCCW () {
   MakeBackup();
-  //Cantos de trÃ¡s
+  //Corners
   Rubik[RF_BACK][0] = Rubik_Backup[RF_BACK][6];
   Rubik[RF_BACK][2] = Rubik_Backup[RF_BACK][0];
   Rubik[RF_BACK][8] = Rubik_Backup[RF_BACK][2];
   Rubik[RF_BACK][6] = Rubik_Backup[RF_BACK][8];
-  //Edges de trÃ¡s
+  //Edges
   Rubik[RF_BACK][1] = Rubik_Backup[RF_BACK][3];
   Rubik[RF_BACK][5] = Rubik_Backup[RF_BACK][1];
   Rubik[RF_BACK][7] = Rubik_Backup[RF_BACK][5];
   Rubik[RF_BACK][3] = Rubik_Backup[RF_BACK][7];
-  //3 peÃ§as de cima movem-se para a esquerda
+  //3 pieces from the top go the the left
   Rubik[RF_UP][6] = Rubik_Backup[RF_LEFT][0];
   Rubik[RF_UP][7] = Rubik_Backup[RF_LEFT][3];
   Rubik[RF_UP][8] = Rubik_Backup[RF_LEFT][6];
-  //3 peÃ§as da esquerda movem-se para baixo
+  //3 pieces from the left go to the bottom
   Rubik[RF_RIGHT][8] = Rubik_Backup[RF_UP][6];
   Rubik[RF_RIGHT][5] = Rubik_Backup[RF_UP][7];
   Rubik[RF_RIGHT][2] = Rubik_Backup[RF_UP][8];
-  //3 peÃ§as de baixo movem-se para a direita
+  //3 pieces from the bottom go to the right
   Rubik[RF_DOWN][2] = Rubik_Backup[RF_RIGHT][8];
   Rubik[RF_DOWN][1] = Rubik_Backup[RF_RIGHT][5];
   Rubik[RF_DOWN][0] = Rubik_Backup[RF_RIGHT][2];
-  //3 peÃ§as da direita movem-se para cima
+  //3 pieces from the right go to the top
   Rubik[RF_LEFT][0] = Rubik_Backup[RF_DOWN][2];
   Rubik[RF_LEFT][3] = Rubik_Backup[RF_DOWN][1];
   Rubik[RF_LEFT][6] = Rubik_Backup[RF_DOWN][0];
@@ -695,7 +695,7 @@ void Cubo::RotateY() {
   RotateUpCCW ();
   RotateDownCW ();
   MakeBackup();
-  //Mover toda a 2ª camada do cubo
+  //Move all the second layer stickers
   Rubik[RF_FRONT][5] = Rubik_Backup[RF_LEFT][5];
   Rubik[RF_FRONT][4] = Rubik_Backup[RF_LEFT][4];
   Rubik[RF_FRONT][3] = Rubik_Backup[RF_LEFT][3];
@@ -709,5 +709,4 @@ void Cubo::RotateY() {
   Rubik[RF_RIGHT][4] = Rubik_Backup[RF_FRONT][4];
   Rubik[RF_RIGHT][3] = Rubik_Backup[RF_FRONT][3];
 }
- 
   

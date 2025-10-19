@@ -198,15 +198,15 @@ class Pusher : public RServo {
 };
 
 
-Rotater Up_Right(0, 5, 405, 0);             //motor para rodar a face da direita no pino 0
-Rotater Up_Back(1, 0, 400, 0);              //motor para rodar a face de trás no pino 1
-Rotater Up_Left(2, 0, 400, 0);              //motor para rodar a face da esquerda no pino 2
-Rotater Up_Front(3, -20, 380, 0);             //motor para rodar a face da frente no pino 3
+Rotater Up_Right(0, 5, 405, 0);             //motor to rotate right face on pin 0
+Rotater Up_Back(1, 0, 400, 0);              //motor to rotate back face on pin 1
+Rotater Up_Left(2, 0, 400, 0);              //motor to rotate left face on pin 2
+Rotater Up_Front(3, -20, 380, 0);           //motor to rotate right face on pin 3
 
-Pusher Down_Right(4, 46);            //motor para andar a face da direita no pino 4
-Pusher Down_Back(5, 47);             //motor para andar a face de trás no pino 5
-Pusher Down_Left(6, 48);             //motor para andar a face da esquerda no pino 6
-Pusher Down_Front(7, 46);            //motor para andar a face da frente no pino 7
+Pusher Down_Right(4, 46);            //motor to move right face on pin 4
+Pusher Down_Back(5, 47);             //motor to move back face on pin 5
+Pusher Down_Left(6, 48);             //motor to move left face on pin 6
+Pusher Down_Front(7, 46);            //motor to move front face on pin 7
 
 
 
@@ -274,7 +274,7 @@ void servos_test() {
 
 
 
-//Rotações dos servos da direita:
+//Rotations of the right servos:
 //______________________________________________________________________
 
 void ServosFace_RightCW() {
@@ -292,7 +292,7 @@ void ServosFace_RightCCW() {
 }
 
 
-//RotaÃ§Ãµes dos servos da esquerda:
+//Rotations dos servos da esquerda:
 //___________________________________________________________________
 
 void ServosFace_LeftCW() {
@@ -310,7 +310,7 @@ void ServosFace_LeftCCW() {
 }
 
 
-//RotaÃ§Ãµes dos servos da frente:
+//Rotations of the front servos:
 //___________________________________________________________________________
 
 void ServosFace_FrontCW() {
@@ -328,7 +328,7 @@ void ServosFace_FrontCCW() {
 }
 
 
-//RotaÃ§Ãµes dos servos de trÃ¡s:
+//Rotations of the back servos:
 //______________________________________________________________________________
 
 void ServosFace_BackCW() {
@@ -346,10 +346,10 @@ void ServosFace_BackCCW() {
 }
 
 
-//RotaÃ§Ãµes dos motores para rodar o cubo no sentido de R (movimento x e x`):
+//Rotations of the motors to rotate the cube in the R direction (moves x e x`):
 //__________________________________________________________________________
 
-#define aperto (2)
+#define ADJUSTMENT (2)
 
 
 void ServosCube_MoveX() {
@@ -357,14 +357,14 @@ void ServosCube_MoveX() {
   Down_Front.rmove(place[2]);
   Down_Back.rmove(place[2]);
   delay(DELAY_BETWEEN_STEPS);
-  Down_Right.rmove(aperto);      //
-  Down_Left.rmove(aperto);       //
+  Down_Right.rmove(ADJUSTMENT);      //
+  Down_Left.rmove(ADJUSTMENT);       //
   delay(100);                //
   Up_Right.Rotate(180);
   Up_Left.Rotate(0);
   delay(160);
-  Down_Front.rmove(place[1] + aperto);
-  Down_Back.rmove(place[1] + aperto);
+  Down_Front.rmove(place[1] + ADJUSTMENT);
+  Down_Back.rmove(place[1] + ADJUSTMENT);
   delay(DELAY_BETWEEN_STEPS2);                      
   Down_Right.rmove(place[3]);
   Down_Left.rmove(place[3]);
@@ -384,14 +384,14 @@ void ServosCube_Movex() {
   Down_Front.rmove(place[2]);
   Down_Back.rmove(place[2]);
   delay(DELAY_BETWEEN_STEPS);
-  Down_Right.rmove(aperto);      
-  Down_Left.rmove(aperto);       
+  Down_Right.rmove(ADJUSTMENT);      
+  Down_Left.rmove(ADJUSTMENT);       
   delay(100);                
   Up_Right.Rotate(0);
   Up_Left.Rotate(180);
   delay(200);
-  Down_Front.rmove(place[1] + aperto);
-  Down_Back.rmove(place[1] + aperto);
+  Down_Front.rmove(place[1] + ADJUSTMENT);
+  Down_Back.rmove(place[1] + ADJUSTMENT);
   delay(DELAY_BETWEEN_STEPS2);                      
   Down_Right.rmove(place[3]);
   Down_Left.rmove(place[3]);
@@ -407,7 +407,7 @@ void ServosCube_Movex() {
 }
 
 
-//Rotações dos motores para rodar o cubo no sentido de F (movimento z e z`):
+//Rotations of the motors to rotate the cube in the F direction (moves z e z`):
 //_________________________________________________________________________
 
 void ServosCube_MoveZ() {
@@ -415,14 +415,14 @@ void ServosCube_MoveZ() {
   Down_Right.rmove(place[2]);
   Down_Left.rmove(place[2]);
   delay(DELAY_BETWEEN_STEPS);
-  Down_Back.rmove(aperto);      //
-  Down_Front.rmove(aperto);       //
+  Down_Back.rmove(ADJUSTMENT);      //
+  Down_Front.rmove(ADJUSTMENT);       //
   delay(100);                //
   Up_Front.Rotate(0);
   Up_Back.Rotate(180);
   delay(180);
-  Down_Right.rmove(place[1] + aperto);
-  Down_Left.rmove(place[1] + aperto);
+  Down_Right.rmove(place[1] + ADJUSTMENT);
+  Down_Left.rmove(place[1] + ADJUSTMENT);
   delay(DELAY_BETWEEN_STEPS2);                      
   Down_Front.rmove(place[3]);
   Down_Back.rmove(place[3]);
@@ -442,14 +442,14 @@ void ServosCube_Movez() {
   Down_Right.rmove(place[2]);
   Down_Left.rmove(place[2]);
   delay(DELAY_BETWEEN_STEPS);
-  Down_Back.rmove(aperto);      //
-  Down_Front.rmove(aperto);       //
+  Down_Back.rmove(ADJUSTMENT);      //
+  Down_Front.rmove(ADJUSTMENT);       //
   delay(100);                //
   Up_Front.Rotate(180);
   Up_Back.Rotate(0);
   delay(180);
-  Down_Right.rmove(place[1] + aperto);
-  Down_Left.rmove(place[1] + aperto);
+  Down_Right.rmove(place[1] + ADJUSTMENT);
+  Down_Left.rmove(place[1] + ADJUSTMENT);
   delay(DELAY_BETWEEN_STEPS2);                     
   Down_Front.rmove(place[3]);
   Down_Back.rmove(place[3]);
@@ -464,7 +464,7 @@ void ServosCube_Movez() {
   delay(DELAY_BETWEEN_STEPS);
 }
 
-//Rotações dos motores para rodar o cubo no sentido de U (movimento Y e Y ):
+//Rotations of the motors to rotate the cube in U direction (move Y and Y ):
 //_________________________________________________________________________
 
 void ServosCube_MoveY() {
